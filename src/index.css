@@ -2,41 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Viking Protest Game Design System - Dark, Edgy, Action-Packed */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base Dark Theme */
+    --background: 220 15% 8%;
+    --foreground: 60 9% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Game UI Cards */
+    --card: 220 15% 12%;
+    --card-foreground: 60 9% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Popovers & Menus */
+    --popover: 220 15% 10%;
+    --popover-foreground: 60 9% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Viking Gold */
+    --primary: 45 100% 65%;
+    --primary-foreground: 220 15% 8%;
+    --primary-glow: 45 100% 75%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Steel Blue */
+    --secondary: 210 25% 25%;
+    --secondary-foreground: 60 9% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted - Dark Gray */
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 10% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Electric Red */
+    --accent: 0 85% 60%;
+    --accent-foreground: 60 9% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive - Blood Red */
+    --destructive: 0 100% 45%;
+    --destructive-foreground: 60 9% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Success - Victory Green */
+    --success: 120 70% 50%;
+    --success-foreground: 60 9% 98%;
 
-    --radius: 0.5rem;
+    /* Warning - Caution Orange */
+    --warning: 35 100% 55%;
+    --warning-foreground: 220 15% 8%;
+
+    /* Borders & Inputs */
+    --border: 220 15% 20%;
+    --input: 220 15% 18%;
+    --ring: 45 100% 65%;
+
+    /* Game Specific Colors */
+    --police-blue: 210 100% 40%;
+    --protester-red: 0 85% 60%;
+    --goon-purple: 270 70% 55%;
+    --nft-gold: 45 100% 65%;
+    --blockchain-cyan: 180 100% 50%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-game: linear-gradient(180deg, hsl(var(--background)), hsl(var(--card)));
+    --gradient-police: linear-gradient(135deg, hsl(var(--police-blue)), hsl(var(--primary)));
+    --gradient-protester: linear-gradient(135deg, hsl(var(--protester-red)), hsl(var(--warning)));
+    --gradient-goon: linear-gradient(135deg, hsl(var(--goon-purple)), hsl(var(--destructive)));
+    --gradient-nft: linear-gradient(135deg, hsl(var(--nft-gold)), hsl(var(--primary-glow)));
+
+    /* Shadows */
+    --shadow-game: 0 20px 40px -10px hsl(var(--primary) / 0.3);
+    --shadow-character: 0 10px 25px -5px hsl(var(--accent) / 0.4);
+    --shadow-nft: 0 15px 35px -8px hsl(var(--nft-gold) / 0.5);
+    --shadow-glow: 0 0 50px hsl(var(--primary-glow) / 0.6);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +141,164 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    background: var(--gradient-game);
+  }
+}
+
+@layer components {
+  /* Game Button Variants */
+  .btn-hero {
+    @apply bg-gradient-to-r from-primary to-primary-glow text-primary-foreground font-bold py-4 px-8 rounded-lg shadow-[var(--shadow-game)] hover:shadow-[var(--shadow-glow)] transform hover:scale-105 transition-all duration-300;
+  }
+
+  .btn-character-police {
+    @apply bg-gradient-to-r from-blue-600 to-blue-400 text-white font-semibold py-3 px-6 rounded-lg shadow-[var(--shadow-character)] hover:scale-105 transition-[var(--transition-bounce)];
+  }
+
+  .btn-character-protester {
+    @apply bg-gradient-to-r from-red-600 to-orange-500 text-white font-semibold py-3 px-6 rounded-lg shadow-[var(--shadow-character)] hover:scale-105 transition-[var(--transition-bounce)];
+  }
+
+  .btn-character-goon {
+    @apply bg-gradient-to-r from-purple-600 to-red-600 text-white font-semibold py-3 px-6 rounded-lg shadow-[var(--shadow-character)] hover:scale-105 transition-[var(--transition-bounce)];
+  }
+
+  .btn-nft {
+    @apply bg-gradient-to-r from-yellow-500 to-yellow-300 text-yellow-900 font-bold py-2 px-4 rounded-lg shadow-[var(--shadow-nft)] hover:shadow-[var(--shadow-glow)] transition-[var(--transition-smooth)];
+  }
+
+  .btn-game {
+    @apply bg-card border border-border text-card-foreground font-medium py-2 px-4 rounded-lg hover:bg-muted transition-[var(--transition-smooth)];
+  }
+
+  /* Game Cards */
+  .card-character {
+    @apply bg-card border border-border rounded-xl p-6 shadow-[var(--shadow-character)] hover:shadow-[var(--shadow-glow)] transform hover:scale-102 transition-[var(--transition-bounce)] cursor-pointer;
+  }
+
+  .card-game {
+    @apply bg-card border border-border rounded-lg p-4 shadow-lg hover:shadow-xl transition-[var(--transition-smooth)];
+  }
+
+  /* Game Text Styles */
+  .text-hero {
+    @apply text-6xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .text-game-title {
+    @apply text-3xl font-bold text-foreground;
+  }
+
+  .text-character-name {
+    @apply text-xl font-semibold text-foreground;
+  }
+
+  /* Game Animations */
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  .animate-bounce-in {
+    animation: bounceIn 0.6s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+
+  /* HUD Elements */
+  .hud-element {
+    @apply bg-card/80 backdrop-blur-sm border border-border rounded-lg p-3 shadow-lg;
+  }
+
+  .progress-bar {
+    @apply w-full bg-muted rounded-full h-3 overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full bg-gradient-to-r from-success to-primary rounded-full transition-all duration-500;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-game {
+    background: var(--gradient-game);
+  }
+
+  .bg-gradient-police {
+    background: var(--gradient-police);
+  }
+
+  .bg-gradient-protester {
+    background: var(--gradient-protester);
+  }
+
+  .bg-gradient-goon {
+    background: var(--gradient-goon);
+  }
+
+  .bg-gradient-nft {
+    background: var(--gradient-nft);
+  }
+
+  .shadow-game {
+    box-shadow: var(--shadow-game);
+  }
+
+  .shadow-character {
+    box-shadow: var(--shadow-character);
+  }
+
+  .shadow-nft {
+    box-shadow: var(--shadow-nft);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

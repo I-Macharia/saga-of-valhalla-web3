@@ -75,7 +75,7 @@
 
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-bounce: var(--transition-bounce);
 
     --radius: 0.75rem;
 
@@ -173,9 +173,9 @@
   }
 
   /* Game Cards */
-  .card-character {
-    @apply bg-card border border-border rounded-xl p-6 shadow-[var(--shadow-character)] hover:shadow-[var(--shadow-glow)] transform hover:scale-102 transition-[var(--transition-bounce)] cursor-pointer;
-  }
+    .card-character {
+      @apply bg-card border border-border rounded-xl p-6 shadow-[var(--shadow-character)] hover:shadow-[var(--shadow-glow)] transform hover:scale-105 transition-[var(--transition-bounce)] cursor-pointer;
+    }
 
   .card-game {
     @apply bg-card border border-border rounded-lg p-4 shadow-lg hover:shadow-xl transition-[var(--transition-smooth)];
